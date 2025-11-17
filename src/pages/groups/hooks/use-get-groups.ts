@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import type { IGroup } from "../models";
-import { supabase } from "lib";
+import { supabase } from "@lib/supabase";
 
 export function useGetGroups() {
   return useQuery<IGroup[]>({

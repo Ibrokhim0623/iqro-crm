@@ -35,7 +35,8 @@
       "@routing/*": ["routing/*"],
       "@utils/*": ["utils/*"],
       "@queries/*": ["queries/*"],
-      "@reducers/*": ["store/reducers/*"]
+      "@reducers/*": ["store/reducers/*"],
+      "@lib/*": ["lib/*"],
     }
   },
   "include": ["src"]

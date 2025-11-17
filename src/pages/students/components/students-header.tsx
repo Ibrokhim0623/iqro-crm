@@ -4,7 +4,7 @@ import { useAppDispatch } from "@hooks/redux-hooks";
 
 const StudentsHeader = () => {
   const dispatch = useAppDispatch();
-  const onOpen = () => dispatch(setOpen(true));
+  const onOpen = () => dispatch(setOpen({ open: true, studentId: null }));
   return (
     <div className="flex flex-col gap-2">
       <div className="flex items-center justify-between mb-6">

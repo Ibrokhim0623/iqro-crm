@@ -3,10 +3,17 @@ import { Edit2, Trash2 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useGetStudents } from "../hooks";
 import { cx } from "@utils/helpers";
+import { useAppDispatch } from "@hooks/redux-hooks";
+import { setOpen } from "@reducers/students-slice";
 
 const StudentsTable = () => {
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
   const { data, isLoading } = useGetStudents();
+
+  const openStudentModal = ({ studentId }: { studentId: number }) => {
+    dispatch(setOpen({ open: true, studentId }));
+  };
 
   const columns = [
     {
@@ -50,9 +57,17 @@ const StudentsTable = () => {
     {
       key: "6",
       title: "Amallar",
-      render: () => (
-        <div className="flex items-center gap-3">
-          <Edit2 size={16} className="cursor-pointer" stroke="blue" />
+      render: (record: { id: number }) => (
+        <div
+          className="flex items-center gap-3"
+          onClick={(e) => e.stopPropagation()}
+        >
+          <Edit2
+            size={16}
+            className="cursor-pointer"
+            stroke="blue"
+            onClick={() => openStudentModal({ studentId: record?.id })}
+          />
           <Trash2 size={16} className="cursor-pointer" stroke="red" />
         </div>
       ),

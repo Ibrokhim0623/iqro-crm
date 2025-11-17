@@ -16,6 +16,7 @@ export default defineConfig({
       "@utils": path.resolve(__dirname, "src/utils"),
       "@queries": path.resolve(__dirname, "src/queries"),
       "@reducers": path.resolve(__dirname, "src/store/reducers"),
+      "@lib": path.resolve(__dirname, "src/lib"),
     },
   },
 });

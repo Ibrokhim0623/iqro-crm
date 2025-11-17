@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import type { IStudent } from "../models";
-import { supabase } from "lib";
+import { supabase } from "@lib/supabase";
 
 export function useGetStudents() {
   return useQuery<IStudent[]>({

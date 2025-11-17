@@ -1,19 +1,29 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 
 interface IStudents {
-  open: boolean;
+  studentModal: {
+    studentId: number | null;
+    open: boolean;
+  };
 }
 
 const initialState: IStudents = {
-  open: false,
+  studentModal: {
+    open: false,
+    studentId: null,
+  },
 };
 
 export const StudentsSlice = createSlice({
   name: "students slice",
   initialState,
   reducers: {
-    setOpen: (state, action: PayloadAction<boolean>) => {
-      state.open = action.payload;
+    setOpen: (
+      state,
+      action: PayloadAction<{ open: boolean; studentId: number | null }>
+    ) => {
+      state.studentModal.open = action.payload.open;
+      state.studentModal.studentId = action.payload.studentId;
     },
   },
 });
