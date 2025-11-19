@@ -1,8 +1,10 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import studentsSlice from "./reducers/students-slice";
+import groupsSlice from "@reducers/groups-slice";
 
 const rootReducer = combineReducers({
   studentsSlice,
+  groupsSlice,
 });
 
 const setupStore = () =>

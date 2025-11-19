@@ -1,18 +1,25 @@
 import { Table } from "antd";
 import { Edit2, Trash2 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import { useGetStudents } from "../hooks";
+import { useDeleteStudent, useGetStudents } from "../hooks";
 import { cx } from "@utils/helpers";
 import { useAppDispatch } from "@hooks/redux-hooks";
 import { setOpen } from "@reducers/students-slice";
+import ConfirmModal from "@components/confirm-modal/confirm-modal";
 
 const StudentsTable = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const { data, isLoading } = useGetStudents();
 
+  const deleteStudent = useDeleteStudent();
+
   const openStudentModal = ({ studentId }: { studentId: number }) => {
     dispatch(setOpen({ open: true, studentId }));
+  };
+
+  const onDeleteStudent = ({ studentId }: { studentId: number }) => {
+    deleteStudent.mutate(studentId);
   };
 
   const columns = [
@@ -68,7 +75,14 @@ const StudentsTable = () => {
             stroke="blue"
             onClick={() => openStudentModal({ studentId: record?.id })}
           />
-          <Trash2 size={16} className="cursor-pointer" stroke="red" />
+          <ConfirmModal
+            text="Haqiqatdan ham ushbu o'quvchini o'chirmoqchimisiz?"
+            title="O'quvchini o'chirish"
+            onConfirm={() => onDeleteStudent({ studentId: record?.id })}
+            loading={deleteStudent.isPending}
+          >
+            <Trash2 size={16} className="cursor-pointer" stroke="red" />
+          </ConfirmModal>
         </div>
       ),
     },
@@ -77,6 +91,7 @@ const StudentsTable = () => {
   const handleRowClick = (studentId: number) => {
     navigate(`/students/${studentId}`);
   };
+
   return (
     <div className="bg-white border border-gray-200 rounded-lg overflow-hidden">
       <Table
