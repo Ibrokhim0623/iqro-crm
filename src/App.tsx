@@ -1,8 +1,8 @@
 import { BrowserRouter } from "react-router-dom";
-import RootRouting from "./routing/root-routing";
 import { Provider } from "react-redux";
 
 import { store } from "./store/store";
+import RootRouting from "@routing/root-routing";
 
 function App() {
   return (

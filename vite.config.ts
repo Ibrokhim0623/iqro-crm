@@ -11,7 +11,7 @@ export default defineConfig({
       "@components": path.resolve(__dirname, "src/components"),
       "@hooks": path.resolve(__dirname, "src/hooks"),
       "@icons": path.resolve(__dirname, "src/assets/icons"),
-      "@images": path.resolve(__dirname, "src/assets/img"),
+      "@images": path.resolve(__dirname, "src/assets/images"),
       "@routing": path.resolve(__dirname, "src/routing"),
       "@utils": path.resolve(__dirname, "src/utils"),
       "@queries": path.resolve(__dirname, "src/queries"),

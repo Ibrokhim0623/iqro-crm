@@ -1,48 +1,14 @@
+import { useGetGroups } from "@pages/groups/hooks";
+import { useGetStudents } from "@pages/students/hooks";
 import { BookOpen, CreditCard, DollarSign, Users } from "lucide-react";
-import { useState } from "react";
-import { useGetStudents } from "../../students/hooks/use-get-students";
 
 const Dashboard = () => {
   const { data: students } = useGetStudents();
-
-  const [groups, setGroups] = useState([
-    {
-      id: 1,
-      name: "Ingliz tili A1",
-      teacher: "Nodira opa",
-      students: 12,
-      schedule: "Du-Chor-Sha 14:00",
-      price: 400000,
-    },
-    {
-      id: 2,
-      name: "Ingliz tili B1",
-      teacher: "Jahongir aka",
-      students: 8,
-      schedule: "Se-Pay-Ju 16:00",
-      price: 500000,
-    },
-    {
-      id: 3,
-      name: "Matematika",
-      teacher: "Aziza opa",
-      students: 15,
-      schedule: "Du-Chor-Sha 10:00",
-      price: 350000,
-    },
-    {
-      id: 4,
-      name: "IELTS",
-      teacher: "Jamshid aka",
-      students: 6,
-      schedule: "Har kuni 18:00",
-      price: 800000,
-    },
-  ]);
+  const { data: groups } = useGetGroups();
 
   const stats = {
     totalStudents: students?.length,
-    activeGroups: groups.length,
+    activeGroups: groups?.length,
     monthlyRevenue: 12500000,
     debtors: students?.filter((s) => (s?.balance || 0) < 0).length,
   };

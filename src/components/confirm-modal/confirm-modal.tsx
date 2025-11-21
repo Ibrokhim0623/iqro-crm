@@ -6,7 +6,7 @@ interface IProps {
   text: string;
   children?: ((props: { onOpen: () => void }) => ReactElement) | ReactElement;
   onConfirm?: () => void;
-  loading: boolean;
+  loading?: boolean;
 }
 
 const ConfirmModal: React.FC<IProps> = ({
@@ -14,7 +14,7 @@ const ConfirmModal: React.FC<IProps> = ({
   children,
   text,
   onConfirm: onConfirmProp,
-  loading,
+  loading = false,
 }) => {
   const [visible, setVisible] = useState(false);
 
@@ -27,40 +27,30 @@ const ConfirmModal: React.FC<IProps> = ({
     ) : null;
   };
 
-  const onClose = () => {
-    setVisible(false);
-  };
+  const onClose = () => setVisible(false);
 
   const onConfirm = async () => {
     if (onConfirmProp) {
       await onConfirmProp();
-
-      onClose();
-    } else {
-      onClose();
     }
+    onClose();
   };
 
   return (
-    <div>
+    <div className="flex items-center justify-center">
       {child()}
       <Modal
         open={visible}
         title={title}
         onCancel={onClose}
-        footer={false}
+        footer={null}
         centered
       >
         <div className="py-2">
           <p className="text-[16px]">{text}</p>
         </div>
         <div className="w-full flex items-center justify-end">
-          <Button
-            className="shadow-none! border-none! bg-red-600! text-white!"
-            onClick={onConfirm}
-            loading={loading}
-            type="default"
-          >
+          <Button danger type="primary" onClick={onConfirm} loading={loading}>
             O'chirish
           </Button>
         </div>

@@ -1,23 +1,105 @@
-import js from '@eslint/js'
-import globals from 'globals'
-import reactHooks from 'eslint-plugin-react-hooks'
-import reactRefresh from 'eslint-plugin-react-refresh'
-import tseslint from 'typescript-eslint'
-import { defineConfig, globalIgnores } from 'eslint/config'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      js.configs.recommended,
-      tseslint.configs.recommended,
-      reactHooks.configs.flat.recommended,
-      reactRefresh.configs.vite,
-    ],
-    languageOptions: {
-      ecmaVersion: 2020,
-      globals: globals.browser,
+export default {
+  plugins: [
+    "prettier",
+    "@typescript-eslint",
+    "unused-imports",
+    "simple-import-sort",
+    "import",
+    "cypress",
+  ],
+  extends: ["airbnb-typescript", "prettier"],
+  parser: "@typescript-eslint/parser",
+  ignorePatterns: ["cypress.config.ts", "cypress/*"],
+  parserOptions: {
+    project: "./tsconfig.json",
+  },
+  settings: {
+    "import/resolver": {
+      node: {
+        extensions: [".js", ".jsx", ".ts", ".tsx"],
+      },
+      typescript: {
+        alwaysTryTypes: true,
+      },
     },
   },
-])
+  rules: {
+    "no-redeclare": "off",
+    "@typescript-eslint/no-redeclare": "off",
+    "guard-for-in": "off",
+    "no-restricted-syntax": "off",
+    "import/no-cycle": "off",
+    "prefer-promise-reject-errors": "warn",
+    "@typescript-eslint/no-unused-expressions": "warn",
+    "jsx-a11y/control-has-associated-label": "off",
+    "react/button-has-type": "off",
+    "react/no-children-prop": "off",
+    "@typescript-eslint/naming-convention": "off",
+    "class-methods-use-this": "off",
+    "no-param-reassign": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "jsx-a11y/no-static-element-interactions": "off",
+    "@typescript-eslint/no-shadow": "off",
+    "no-return-assign": "off",
+    "global-require": "off",
+    "react/jsx-uses-react": "off",
+    "react/react-in-jsx-scope": "off",
+    "jsx-a11y/click-events-have-key-events": "off",
+    "arrow-body-style": ["error", "as-needed"],
+    "newline-after-var": "error",
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": "off",
+    "simple-import-sort/exports": "error",
+    "no-nested-ternary": "warn",
+    "import/first": "error",
+    "import/newline-after-import": "error",
+    "import/no-duplicates": "error",
+    "unused-imports/no-unused-imports": "error",
+    "react/no-array-index-key": "warn",
+    "object-curly-spacing": ["warn", "always"],
+    "jsx-a11y/no-noninteractive-element-interactions": "off",
+    "jsx-a11y/label-has-associated-control": "off",
+
+    "no-plusplus": [
+      "warn",
+      {
+        allowForLoopAfterthoughts: true,
+      },
+    ],
+    "react/jsx-key": "error",
+    "import/no-extraneous-dependencies": [
+      "off",
+      {
+        devDependencies: [
+          "**/*.test.js",
+          "**/*.test.jsx",
+          "**/*.test.ts",
+          "**/*.test.tsx",
+          "src/tests/**/*",
+          "src/setupTests.ts",
+        ],
+      },
+    ],
+    "react/jsx-props-no-spreading": "off",
+    "import/prefer-default-export": "off",
+    "react/jsx-boolean-value": "off",
+    "react/require-default-props": "off",
+    "react/prop-types": "off",
+    "react/no-unescaped-entities": "off",
+    "react/jsx-one-expression-per-line": "off",
+    "react/jsx-wrap-multilines": "off",
+    "react/destructuring-assignment": "off",
+    "react/no-unused-prop-types": "off",
+    "@typescript-eslint/comma-dangle": [
+      "error",
+      {
+        arrays: "only-multiline",
+        objects: "only-multiline",
+        imports: "only-multiline",
+        exports: "only-multiline",
+        functions: "never",
+      },
+    ],
+    "no-console": "warn",
+  },
+};
