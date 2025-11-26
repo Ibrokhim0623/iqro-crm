@@ -1,7 +1,7 @@
 import { useAppDispatch, useAppSelector } from "@hooks/redux-hooks";
 import { useGetGroups } from "@pages/groups/hooks";
 import { setOpen } from "@reducers/students-slice";
-import { Form, Input, InputNumber, Modal, Select } from "antd";
+import { Form, Input, Modal, Select } from "antd";
 import { useGetStudents, useUpsertStudent } from "../hooks";
 import type { IStudentCreate } from "../models";
 import { useEffect } from "react";
@@ -22,6 +22,8 @@ const CreateUpdateModal = () => {
     (state) => state.studentsSlice.studentModal.studentId
   );
 
+  const currentStudent = students?.find((item) => item?.id === studentId);
+
   const onCancel = () => {
     form.resetFields();
     dispatch(setOpen({ open: false, studentId: null }));
@@ -29,13 +31,16 @@ const CreateUpdateModal = () => {
 
   const onFinish = (values: IStudentCreate) => {
     createStudent
-      .mutateAsync({ ...values, ...(studentId !== null && { id: studentId }) })
+      .mutateAsync({
+        ...values,
+        ...(studentId !== null && { id: studentId }),
+        balance: currentStudent?.balance ? currentStudent?.balance : 0,
+      })
       .then(onCancel);
   };
 
   useEffect(() => {
     if (studentId !== null && open) {
-      const currentStudent = students?.find((item) => item?.id === studentId);
       form.setFieldsValue({
         ...currentStudent,
         phone: String(currentStudent?.phone)?.includes("+")
@@ -107,22 +112,6 @@ const CreateUpdateModal = () => {
             <Option value="active">✓ Faol</Option>
             <Option value="inactive">✗ Nofaol</Option>
           </Select>
-        </Form.Item>
-
-        <Form.Item
-          name="balance"
-          label="Balans (so'm)"
-          tooltip="Musbat - ortiqcha, Manfiy - qarz"
-        >
-          <InputNumber
-            size="large"
-            style={{ width: "100%" }}
-            formatter={(value) =>
-              `${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, " ")
-            }
-            parser={(value) => value!.replace(/\s/g, "")}
-            placeholder="0"
-          />
         </Form.Item>
       </Form>
     </Modal>

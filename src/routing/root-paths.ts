@@ -3,4 +3,5 @@ export const rootPaths = {
   LOGIN: "/login",
   GROUPS: "/groups",
   STUDENTS: "/students",
+  PAYMENTS: "/payments",
 };

@@ -3,6 +3,7 @@ import { rootPaths } from "./root-paths";
 import Groups from "@pages/groups/components";
 import Students from "@pages/students/components";
 import StudentDetail from "@pages/students/components/students-detail";
+import Payments from "@pages/payments/components";
 
 export const rootRoutes = [
   {
@@ -16,6 +17,10 @@ export const rootRoutes = [
   {
     component: Students,
     path: rootPaths.STUDENTS,
+  },
+  {
+    component: Payments,
+    path: rootPaths.PAYMENTS,
   },
   {
     component: StudentDetail,

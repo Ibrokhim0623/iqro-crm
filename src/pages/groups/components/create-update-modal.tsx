@@ -7,6 +7,7 @@ import { useGetGroups, useUpsertGroup } from "../hooks";
 import { daysOfWeek } from "../helpers";
 import { useEffect } from "react";
 import dayjs from "dayjs";
+import GlobalInput from "@components/global-input/global-input";
 
 const { Option } = Select;
 
@@ -77,7 +78,11 @@ const CreateUpdateModal = () => {
           label="Kurs uchun to'lov miqdori"
           rules={[{ required: true, message: "" }]}
         >
-          <Input placeholder="To'lov miqdorini kiriting" />
+          <GlobalInput
+            placeholder="To'lov miqdorini kiriting"
+            type="currency"
+            returnType="number"
+          />
         </Form.Item>
         <Form.Item
           name="teacher_id"

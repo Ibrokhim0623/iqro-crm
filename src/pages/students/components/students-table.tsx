@@ -43,6 +43,7 @@ const StudentsTable = () => {
       key: "4",
       title: "Balansi",
       dataIndex: "balance",
+      render: (record: number) => <p>{record?.toLocaleString("ru")}</p>,
     },
     {
       key: "5",

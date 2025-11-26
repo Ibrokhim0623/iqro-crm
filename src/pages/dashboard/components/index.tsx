@@ -1,10 +1,15 @@
 import { useGetGroups } from "@pages/groups/hooks";
+import { useGetPayments } from "@pages/payments/hooks";
 import { useGetStudents } from "@pages/students/hooks";
+import dayjs from "dayjs";
 import { BookOpen, CreditCard, DollarSign, Users } from "lucide-react";
 
 const Dashboard = () => {
   const { data: students } = useGetStudents();
   const { data: groups } = useGetGroups();
+  const { data: payments } = useGetPayments();
+
+  const filteredPayments = structuredClone(payments);
 
   const stats = {
     totalStudents: students?.length,
@@ -79,33 +84,18 @@ const Dashboard = () => {
             So'nggi to'lovlar
           </h2>
           <div className="space-y-3">
-            {[
-              {
-                student: "Ali Valiyev",
-                amount: 400000,
-                date: "15 Noy",
-                status: "paid",
-              },
-              {
-                student: "Malika Karimova",
-                amount: 350000,
-                date: "14 Noy",
-                status: "paid",
-              },
-              {
-                student: "Sardor Rahimov",
-                amount: 500000,
-                date: "13 Noy",
-                status: "paid",
-              },
-            ].map((payment, i) => (
+            {filteredPayments?.splice(0, 3).map((payment, i) => (
               <div
                 key={i}
                 className="flex items-center justify-between py-2 border-b border-gray-100"
               >
                 <div>
-                  <p className="font-medium text-gray-800">{payment.student}</p>
-                  <p className="text-sm text-gray-500">{payment.date}</p>
+                  <p className="font-medium text-gray-800">
+                    {payment.student_name}
+                  </p>
+                  <p className="text-sm text-gray-500">
+                    {dayjs(payment.payment_date).format("DD MMM")}
+                  </p>
                 </div>
                 <div className="text-right">
                   <p className="font-semibold text-green-600">

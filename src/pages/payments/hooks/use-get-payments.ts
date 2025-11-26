@@ -1,0 +1,37 @@
+import { useQuery } from "@tanstack/react-query";
+import type { IPayment } from "../models";
+import { supabase } from "@lib/supabase";
+
+export function useGetPayments() {
+  return useQuery<IPayment[], Error>({
+    queryKey: ["payments"],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from("payments")
+        .select(
+          `
+          id,
+          student_name,
+          amount,
+          payment_date,
+          description,
+          created_at
+        `
+        )
+        .order("payment_date", { ascending: false });
+
+      if (error) throw error;
+
+      return (data || []).map((p: any) => ({
+        id: p.id,
+        student_name: p.student_name,
+        amount: Number(p.amount),
+        payment_date: p.payment_date,
+        description: p.description,
+        created_at: p.created_at,
+      }));
+    },
+    staleTime: Infinity,
+    refetchOnWindowFocus: true,
+  });
+}

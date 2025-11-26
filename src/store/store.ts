@@ -1,10 +1,12 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import studentsSlice from "./reducers/students-slice";
 import groupsSlice from "@reducers/groups-slice";
+import paymentsSlice from "@reducers/payments-slice";
 
 const rootReducer = combineReducers({
   studentsSlice,
   groupsSlice,
+  paymentsSlice,
 });
 
 const setupStore = () =>
