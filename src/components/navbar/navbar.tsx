@@ -3,6 +3,7 @@ import { navbarLinks } from "./navbar-links";
 import { NavLink, useLocation } from "react-router-dom";
 import { cx } from "@utils/helpers";
 import { useLogout } from "@pages/login/hooks";
+import { LogOutIcon } from "lucide-react";
 
 const Navbar = () => {
   const location = useLocation();
@@ -34,9 +35,13 @@ const Navbar = () => {
           ))}
         </div>
       </div>
-      <button onClick={logout} className="text-red-500 cursor-pointer">
-        Logout
-      </button>
+      <div
+        onClick={logout}
+        className="text-red-500 cursor-pointer flex items-center gap-2 p-2"
+      >
+        <p className="font-medium">Logout</p>
+        <LogOutIcon size={18} />
+      </div>
     </div>
   );
 };

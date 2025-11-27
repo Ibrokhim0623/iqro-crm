@@ -3,6 +3,7 @@ import {
   LayoutDashboardIcon,
   User2,
   BadgeDollarSign,
+  BanknoteArrowDown,
 } from "lucide-react";
 
 export const navbarLinks = [
@@ -10,4 +11,5 @@ export const navbarLinks = [
   { name: "Guruhlar", path: "/groups", icon: <Group /> },
   { name: "O'quvchilar", path: "/students", icon: <User2 /> },
   { name: "To'lovlar", path: "/payments", icon: <BadgeDollarSign /> },
+  { name: "Qarzdorliklar", path: "/debts", icon: <BanknoteArrowDown /> },
 ];

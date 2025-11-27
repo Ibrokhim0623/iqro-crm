@@ -1,5 +1,6 @@
 import { supabase } from "@lib/supabase";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { toast } from "sonner";
 
 export function useAddPayment() {
   const queryClient = useQueryClient();
@@ -23,6 +24,8 @@ export function useAddPayment() {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["payments"] });
       queryClient.invalidateQueries({ queryKey: ["students"] });
+      queryClient.invalidateQueries({ queryKey: ["monthlyDebts"] });
+      toast.success("To'lovingiz qabul qilindi");
     },
   });
 }

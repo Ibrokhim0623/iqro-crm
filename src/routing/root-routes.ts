@@ -4,6 +4,7 @@ import Groups from "@pages/groups/components";
 import Students from "@pages/students/components";
 import StudentDetail from "@pages/students/components/students-detail";
 import Payments from "@pages/payments/components";
+import DebtsPage from "@pages/debts/components";
 
 export const rootRoutes = [
   {
@@ -21,6 +22,10 @@ export const rootRoutes = [
   {
     component: Payments,
     path: rootPaths.PAYMENTS,
+  },
+  {
+    component: DebtsPage,
+    path: rootPaths.DEBTS,
   },
   {
     component: StudentDetail,

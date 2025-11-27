@@ -1,6 +1,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { supabase } from "@lib/supabase";
 import type { IStudent } from "../models/student-model";
+import { toast } from "sonner";
 
 export function useUpsertStudent() {
   const queryClient = useQueryClient();
@@ -30,6 +31,8 @@ export function useUpsertStudent() {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["students"] });
+      queryClient.invalidateQueries({ queryKey: ["monthlyDebts"] });
+      toast.success("Muvaffaqqiyatli");
     },
   });
 }

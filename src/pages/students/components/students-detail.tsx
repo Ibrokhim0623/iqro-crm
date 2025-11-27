@@ -408,9 +408,7 @@ const StudentDetail = () => {
                 <div className="flex justify-between">
                   <span className="text-gray-600">Ro'yxatdan o'tgan:</span>
                   <span className="font-medium text-gray-800">
-                    {new Date(student.registeredDate).toLocaleDateString(
-                      "uz-UZ"
-                    )}
+                    {new Date(student.registeredDate).toLocaleDateString("ru")}
                   </span>
                 </div>
               </div>
@@ -459,7 +457,7 @@ const StudentDetail = () => {
                     }`}
                   >
                     {student.balance < 0 ? "-" : "+"}
-                    {Math.abs(student.balance).toLocaleString("uz-UZ")} so'm
+                    {Math.abs(student.balance).toLocaleString("ru")} so'm
                   </span>
                 </div>
               </div>
@@ -490,7 +488,7 @@ const StudentDetail = () => {
                           {exam.name}
                         </h4>
                         <p className="text-sm text-gray-500">
-                          {new Date(exam.date).toLocaleDateString("uz-UZ")}
+                          {new Date(exam.date).toLocaleDateString("ru")}
                         </p>
                       </div>
                     </div>
@@ -543,7 +541,7 @@ const StudentDetail = () => {
                       {payment.month} oyi
                     </p>
                     <p className="text-sm text-gray-500">
-                      {new Date(payment.date).toLocaleDateString("uz-UZ")}
+                      {new Date(payment.date).toLocaleDateString("ru")}
                     </p>
                   </div>
                   <div className="text-right">
@@ -554,7 +552,7 @@ const StudentDetail = () => {
                           : "text-orange-600"
                       }`}
                     >
-                      {payment.amount.toLocaleString("uz-UZ")} so'm
+                      {payment.amount.toLocaleString("ru")} so'm
                     </p>
                     <p
                       className={`text-xs ${
@@ -590,7 +588,7 @@ const StudentDetail = () => {
                   }`}
                 >
                   <p className="text-xs text-gray-600 mb-1">
-                    {new Date(record.date).toLocaleDateString("uz-UZ", {
+                    {new Date(record.date).toLocaleDateString("ru", {
                       day: "2-digit",
                       month: "short",
                     })}
