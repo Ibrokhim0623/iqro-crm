@@ -27,23 +27,29 @@ const StudentsTable = () => {
       key: "1",
       title: "To'liq ismi",
       dataIndex: "name",
+      render: (record: string) => <p className="font-medium">{record}</p>,
     },
     {
       key: "2",
       title: "Telefon raqami",
       dataIndex: "phone",
+      render: (record: number) => <p>{`+${record}`}</p>,
     },
     {
       key: "3",
       title: "Guruhi",
       dataIndex: "group",
-      render: (record: { name: string }) => <div>{record?.name}</div>,
+      render: (record: { name: string }) => (
+        <div className="font-medium">{record?.name}</div>
+      ),
     },
     {
       key: "4",
       title: "Balansi",
       dataIndex: "balance",
-      render: (record: number) => <p>{record?.toLocaleString("ru")}</p>,
+      render: (record: number) => (
+        <p className="font-medium">{`${record?.toLocaleString("ru")} so'm`}</p>
+      ),
     },
     {
       key: "5",

@@ -10,12 +10,15 @@ const PaymentsTable = () => {
       key: "1",
       title: "O'quvchi ismi",
       dataIndex: "student_name",
+      render: (record: string) => <p className="font-medium">{record}</p>,
     },
     {
       key: "2",
       title: "To'lov summasi",
       dataIndex: "amount",
-      render: (record: number) => <p>{record?.toLocaleString("ru")}</p>,
+      render: (record: number) => (
+        <p className="font-medium">{`${record?.toLocaleString("ru")} so'm`}</p>
+      ),
     },
     {
       key: "3",

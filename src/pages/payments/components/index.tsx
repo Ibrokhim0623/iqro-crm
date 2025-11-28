@@ -4,7 +4,7 @@ import PaymentsTable from "./payments-table";
 
 const Payments = () => {
   return (
-    <div className="w-full">
+    <div className="flex flex-col p-4">
       <PaymentsHeader />
       <PaymentsTable />
 

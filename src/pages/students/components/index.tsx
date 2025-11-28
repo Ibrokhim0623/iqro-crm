@@ -4,7 +4,7 @@ import StudentsHeader from "./students-header";
 
 const Students = () => {
   return (
-    <div>
+    <div className="flex flex-col p-4">
       <StudentsHeader />
       <StudentsTable />
       <CreateUpdateModal />

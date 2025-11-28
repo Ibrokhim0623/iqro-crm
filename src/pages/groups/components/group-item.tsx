@@ -19,18 +19,15 @@ const GroupItem: React.FC<IProps> = ({ group }) => {
   const days = daysOfWeek
     ?.filter((item) => group?.days?.includes(item?.id))
     ?.map((elem) => elem?.short)
-    ?.join("-");
+    ?.join(", ");
 
   return (
-    <div
-      key={group.id}
-      className="bg-white border border-gray-200 rounded-lg p-5 hover:shadow-lg transition-shadow"
-    >
-      <div className="flex items-start justify-between mb-3">
-        <h3 className="text-lg font-semibold text-gray-800">{group.name}</h3>
+    <div className="bg-white border border-gray-200 rounded-2xl p-4 shadow-sm hover:shadow-md transition-shadow flex flex-col gap-3">
+      <div className="flex justify-between items-start">
+        <h3 className="text-lg font-semibold text-gray-900">{group.name}</h3>
         <div className="flex gap-2">
           <button
-            className="text-blue-600 hover:text-blue-800 cursor-pointer"
+            className="p-2 rounded-lg hover:bg-blue-50 text-blue-600 transition cursor-pointer"
             onClick={() =>
               dispatch(setOpen({ groupId: group?.id, open: true }))
             }
@@ -45,7 +42,7 @@ const GroupItem: React.FC<IProps> = ({ group }) => {
           >
             {({ onOpen }) => (
               <button
-                className="text-red-600 hover:text-red-800 cursor-pointer"
+                className="p-2 rounded-lg hover:bg-red-50 text-red-600 transition cursor-pointer"
                 onClick={onOpen}
               >
                 <Trash2 size={18} />
@@ -57,41 +54,35 @@ const GroupItem: React.FC<IProps> = ({ group }) => {
 
       <div className="space-y-2 text-sm text-gray-600">
         <div className="flex items-center gap-2">
-          <Users size={16} />
+          <Users size={16} className="text-gray-500" />
           <span>{group.student_count} o'quvchi</span>
         </div>
-        {group?.days && group?.end_time ? (
+        {group?.days && group?.end_time && (
           <div className="flex items-center gap-2">
-            <Calendar size={16} />
-            <div className="flex items-center gap-2">
-              <span>{group?.days ? days : ""}</span>
+            <Calendar size={16} className="text-gray-500" />
+            <div className="flex flex-col sm:flex-row sm:gap-2">
+              <span>{days}</span>
               <span>
-                {group?.end_time &&
-                  `${dayjs(group?.start_time).format("HH:mm")} - ${dayjs(
-                    group?.end_time
-                  ).format("HH:mm")}`}
+                {`${dayjs(group?.start_time).format("HH:mm")} - ${dayjs(
+                  group?.end_time
+                ).format("HH:mm")}`}
               </span>
             </div>
           </div>
-        ) : (
-          ""
         )}
         <div className="flex items-center gap-2">
-          <DollarSign size={16} />
-          <span className="font-semibold text-gray-800">
+          <DollarSign size={16} className="text-gray-500" />
+          <span className="font-semibold text-gray-900">
             {(group.price_cource / 1000).toFixed(0)}k so'm/oy
           </span>
         </div>
-      </div>
-
-      <div className="mt-4 pt-4 border-t border-gray-100">
-        <p className="text-sm text-gray-600">
-          <span className="font-medium">O'qituvchi:</span>{" "}
+        <p>
+          <span className="font-medium text-gray-800">O'qituvchi:</span>
           {group.teacher?.full_name}
         </p>
       </div>
 
-      <button className="mt-4 w-full bg-blue-50 text-blue-600 py-2 rounded-lg hover:bg-blue-100 font-medium">
+      <button className="mt-3 w-full py-2 rounded-lg bg-blue-50 text-blue-600 font-medium hover:bg-blue-100 transition cursor-pointer">
         Batafsil
       </button>
     </div>
