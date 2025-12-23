@@ -1,5 +1,5 @@
 import { Table, Tag } from "antd";
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 import { useGetMonthlyDebts } from "../hooks";
 import type { IDebtData } from "../models";
 
@@ -65,14 +65,14 @@ const DebtsTable: React.FC<IProps> = ({ search, selectedGroup }) => {
   ];
 
   return (
-    <div className="bg-white border border-gray-200 rounded-lg overflow-hidden">
+    <div className="bg-[var(--bg)] border border-gray-200 rounded-lg overflow-hidden">
       <Table
         loading={isLoading}
         rowKey={(r: IDebtData) => r.student?.student_id}
         columns={columns}
         dataSource={filtered}
         pagination={false}
-        className="bg-white rounded-lg shadow"
+        className="bg-[var(--bg)] rounded-lg shadow"
       />
     </div>
   );

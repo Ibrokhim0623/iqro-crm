@@ -8,7 +8,9 @@ const StudentsHeader = () => {
   return (
     <div className="flex flex-col">
       <div className="flex items-center justify-between mb-4">
-        <h1 className="text-2xl font-bold text-gray-800">O'quvchilar</h1>
+        <h1 className="text-2xl font-bold text-[var(--text-default)]">
+          O'quvchilar
+        </h1>
         <button
           className="bg-blue-600 text-white px-4 py-2 rounded-lg flex items-center gap-2 hover:bg-blue-700 cursor-pointer"
           onClick={onOpen}
@@ -18,7 +20,7 @@ const StudentsHeader = () => {
         </button>
       </div>
 
-      <div className="bg-white border border-gray-200 rounded-lg p-3 mb-4">
+      <div className="bg-[var(--bg)] border border-gray-200 rounded-lg p-3 mb-4">
         <div className="flex items-center gap-2">
           <Search className="text-gray-400" size={20} />
           <input

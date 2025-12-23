@@ -11,7 +11,7 @@ const Navbar = () => {
   const pathName = useMemo(() => location?.pathname, [location?.pathname]);
 
   return (
-    <div className="h-screen w-64 bg-white border-r border-gray-200 p-4 flex flex-col justify-between">
+    <div className="h-screen w-64 bg-[var(--bg)] border-r border-gray-200 p-4 flex flex-col justify-between">
       <div>
         <div className="mb-4">
           <h1 className="text-xl font-bold text-blue-600">IqroCRM</h1>
@@ -23,8 +23,10 @@ const Navbar = () => {
               key={navbar?.path}
               to={{ pathname: navbar?.path }}
               className={cx(
-                "p-2 text-base font-medium rounded-md hover:bg-blue-50 hover:text-blue-600 transition-all duration-200",
-                pathName === navbar?.path ? "bg-blue-50  text-blue-600" : ""
+                "p-2 text-base font-medium rounded-md hover:bg-[var(--bg-blue-soft)] hover:text-blue-600 transition-all duration-200",
+                pathName === navbar?.path
+                  ? "bg-[var(--bg-blue-soft)]  text-blue-600"
+                  : ""
               )}
             >
               <div className="flex items-center gap-2">

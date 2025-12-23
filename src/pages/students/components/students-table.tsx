@@ -100,7 +100,7 @@ const StudentsTable = () => {
   };
 
   return (
-    <div className="bg-white border border-gray-200 rounded-lg overflow-hidden">
+    <div className="bg-[var(--bg)] border border-gray-200 rounded-lg overflow-hidden">
       <Table
         dataSource={data}
         columns={columns}

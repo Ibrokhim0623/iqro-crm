@@ -22,12 +22,14 @@ const GroupItem: React.FC<IProps> = ({ group }) => {
     ?.join(", ");
 
   return (
-    <div className="bg-white border border-gray-200 rounded-2xl p-4 shadow-sm hover:shadow-md transition-shadow flex flex-col gap-3">
+    <div className="bg-[var(--bg)] border border-gray-200 rounded-2xl p-4 shadow-sm hover:shadow-md transition-shadow flex flex-col gap-3">
       <div className="flex justify-between items-start">
-        <h3 className="text-lg font-semibold text-gray-900">{group.name}</h3>
+        <h3 className="text-lg font-semibold text-[var(--text-default)]">
+          {group.name}
+        </h3>
         <div className="flex gap-2">
           <button
-            className="p-2 rounded-lg hover:bg-blue-50 text-blue-600 transition cursor-pointer"
+            className="p-2 rounded-lg hover:bg-[var(--bg-blue-soft)] text-blue-600 transition cursor-pointer"
             onClick={() =>
               dispatch(setOpen({ groupId: group?.id, open: true }))
             }
@@ -72,17 +74,18 @@ const GroupItem: React.FC<IProps> = ({ group }) => {
         )}
         <div className="flex items-center gap-2">
           <DollarSign size={16} className="text-gray-500" />
-          <span className="font-semibold text-gray-900">
+          <span className="font-semibold text-[var(--text-default)]">
             {(group.price_cource / 1000).toFixed(0)}k so'm/oy
           </span>
         </div>
         <p>
-          <span className="font-medium text-gray-800">O'qituvchi:</span>
-          {group.teacher?.full_name}
+          <span className="font-medium text-[var(--text-default)]">
+            O'qituvchi: {group.teacher?.full_name}
+          </span>
         </p>
       </div>
 
-      <button className="mt-3 w-full py-2 rounded-lg bg-blue-50 text-blue-600 font-medium hover:bg-blue-100 transition cursor-pointer">
+      <button className="mt-3 w-full py-2 rounded-lg bg-[var(--bg-blue-soft)] text-blue-600 font-medium hover:bg-blue-100 transition cursor-pointer">
         Batafsil
       </button>
     </div>

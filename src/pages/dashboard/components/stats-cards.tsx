@@ -27,31 +27,31 @@ const StatsCards = () => {
     {
       title: "Jami o‘quvchilar",
       value: 284,
-      bg: "from-[#F1FAFF] to-[#E2F4FF]",
+      bg: "from-[var(--grad-blue-from)] to-[var(--grad-blue-to)]",
       icon: <Users size={24} />,
     },
     {
       title: "Aktiv guruhlar",
       value: 12,
-      bg: "from-[#ECFDF5] to-[#D1FAE5]",
+      bg: "from-[var(--grad-emerald-from)] to-[var(--grad-emerald-to)]",
       icon: <Layers size={24} />,
     },
     {
       title: "Joriy oy to‘lovlari",
       value: "24 000 000 so'm",
-      bg: "from-[#F0F7FF] to-[#DCEBFF]",
+      bg: "from-[var(--grad-softblue-from)] to-[var(--grad-softblue-to)]",
       icon: <Wallet size={24} />,
     },
     {
       title: "Kutilayotgan to‘lovlar (oylik)",
       value: "32 400 000 so'm",
-      bg: "from-[#EEF2FF] to-[#E0E7FF]",
+      bg: "from-[var(--grad-indigo-from)] to-[var(--grad-indigo-to)]",
       icon: <CreditCard size={24} />,
     },
     {
       title: "Qarzdorlar soni",
       value: 37,
-      bg: "from-[#FFF4F4] to-[#FFEAEA]",
+      bg: "from-[var(--grad-rose-from)] to-[var(--grad-rose-to)]",
       icon: <AlertCircle size={24} />,
     },
   ];

@@ -10,7 +10,7 @@ const Layout = () => {
       <div className="flex-1 flex flex-col h-screen">
         <AppHeader />
 
-        <div className="bg-gray-50 h-[calc(100vh-64px)]">
+        <div className="h-[calc(100vh-64px)] bg-[var(--bg-surface)]">
           <Outlet />
         </div>
       </div>

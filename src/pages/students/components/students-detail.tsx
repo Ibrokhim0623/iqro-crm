@@ -217,7 +217,7 @@ const StudentDetail = () => {
     return (
       <div className="flex items-center justify-center h-full">
         <div className="text-center">
-          <h2 className="text-2xl font-bold text-gray-800 mb-2">
+          <h2 className="text-2xl font-bold text-[var(--text-default)] mb-2">
             O'quvchi topilmadi
           </h2>
           <button
@@ -245,20 +245,20 @@ const StudentDetail = () => {
       <div className="mb-6">
         <button
           onClick={() => navigate("/students")}
-          className="flex items-center gap-2 text-gray-600 hover:text-gray-800 mb-4 cursor-pointer"
+          className="flex items-center gap-2 text-gray-600 hover:text-[var(--text-default)] mb-4 cursor-pointer"
         >
           <ArrowLeft size={20} />
           <span>Orqaga</span>
         </button>
 
-        <div className="bg-white border border-gray-200 rounded-lg p-6">
+        <div className="bg-[var(--bg)] border border-gray-200 rounded-lg p-6">
           <div className="flex items-start justify-between">
             <div className="flex items-center gap-4">
               <div className="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center">
                 <User className="text-blue-600" size={40} />
               </div>
               <div>
-                <h1 className="text-2xl font-bold text-gray-800">
+                <h1 className="text-2xl font-bold text-[var(--text-default)]">
                   {student.name}
                 </h1>
                 <p className="text-gray-600">{student.group}</p>
@@ -321,14 +321,14 @@ const StudentDetail = () => {
       </div>
 
       {/* Tabs */}
-      <div className="bg-white border border-gray-200 rounded-lg mb-4">
+      <div className="bg-[var(--bg)] border border-gray-200 rounded-lg mb-4">
         <div className="flex border-b border-gray-200">
           <button
             onClick={() => setActiveTab("overview")}
             className={`px-6 py-3 font-medium ${
               activeTab === "overview"
                 ? "text-blue-600 border-b-2 border-blue-600"
-                : "text-gray-600 hover:text-gray-800"
+                : "text-gray-600 hover:text-[var(--text-default)]"
             }`}
           >
             Umumiy ma'lumot
@@ -338,7 +338,7 @@ const StudentDetail = () => {
             className={`px-6 py-3 font-medium ${
               activeTab === "exams"
                 ? "text-blue-600 border-b-2 border-blue-600"
-                : "text-gray-600 hover:text-gray-800"
+                : "text-gray-600 hover:text-[var(--text-default)]"
             }`}
           >
             Imtihonlar
@@ -348,7 +348,7 @@ const StudentDetail = () => {
             className={`px-6 py-3 font-medium ${
               activeTab === "payments"
                 ? "text-blue-600 border-b-2 border-blue-600"
-                : "text-gray-600 hover:text-gray-800"
+                : "text-gray-600 hover:text-[var(--text-default)]"
             }`}
           >
             To'lovlar
@@ -358,7 +358,7 @@ const StudentDetail = () => {
             className={`px-6 py-3 font-medium ${
               activeTab === "attendance"
                 ? "text-blue-600 border-b-2 border-blue-600"
-                : "text-gray-600 hover:text-gray-800"
+                : "text-gray-600 hover:text-[var(--text-default)]"
             }`}
           >
             Davomat
@@ -367,47 +367,47 @@ const StudentDetail = () => {
       </div>
 
       {/* Tab Content */}
-      <div className="bg-white border border-gray-200 rounded-lg p-6">
+      <div className="bg-[var(--bg)] border border-gray-200 rounded-lg p-6">
         {activeTab === "overview" && (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
-              <h3 className="text-lg font-semibold text-gray-800 mb-4">
+              <h3 className="text-lg font-semibold text-[var(--text-default)] mb-4">
                 Shaxsiy ma'lumotlar
               </h3>
               <div className="space-y-3">
                 <div className="flex justify-between">
                   <span className="text-gray-600">To'liq ismi:</span>
-                  <span className="font-medium text-gray-800">
+                  <span className="font-medium text-[var(--text-default)]">
                     {student.name}
                   </span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-600">Telefon:</span>
-                  <span className="font-medium text-gray-800">
+                  <span className="font-medium text-[var(--text-default)]">
                     {student.phone}
                   </span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-600">Email:</span>
-                  <span className="font-medium text-gray-800">
+                  <span className="font-medium text-[var(--text-default)]">
                     {student.email}
                   </span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-600">Manzil:</span>
-                  <span className="font-medium text-gray-800">
+                  <span className="font-medium text-[var(--text-default)]">
                     {student.address}
                   </span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-600">Ota-ona tel:</span>
-                  <span className="font-medium text-gray-800">
+                  <span className="font-medium text-[var(--text-default)]">
                     {student.parentPhone}
                   </span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-600">Ro'yxatdan o'tgan:</span>
-                  <span className="font-medium text-gray-800">
+                  <span className="font-medium text-[var(--text-default)]">
                     {new Date(student.registeredDate).toLocaleDateString("ru")}
                   </span>
                 </div>
@@ -415,13 +415,13 @@ const StudentDetail = () => {
             </div>
 
             <div>
-              <h3 className="text-lg font-semibold text-gray-800 mb-4">
+              <h3 className="text-lg font-semibold text-[var(--text-default)] mb-4">
                 O'qish ma'lumotlari
               </h3>
               <div className="space-y-3">
                 <div className="flex justify-between">
                   <span className="text-gray-600">Guruh:</span>
-                  <span className="font-medium text-gray-800">
+                  <span className="font-medium text-[var(--text-default)]">
                     {student.group}
                   </span>
                 </div>
@@ -433,7 +433,7 @@ const StudentDetail = () => {
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-600">Jami imtihonlar:</span>
-                  <span className="font-medium text-gray-800">
+                  <span className="font-medium text-[var(--text-default)]">
                     {student.exams.length}
                   </span>
                 </div>
@@ -467,7 +467,7 @@ const StudentDetail = () => {
 
         {activeTab === "exams" && (
           <div>
-            <h3 className="text-lg font-semibold text-gray-800 mb-4">
+            <h3 className="text-lg font-semibold text-[var(--text-default)] mb-4">
               Imtihon natijalari
             </h3>
             <div className="space-y-4">
@@ -484,7 +484,7 @@ const StudentDetail = () => {
                         <XCircle className="text-red-500" size={24} />
                       )}
                       <div>
-                        <h4 className="font-semibold text-gray-800">
+                        <h4 className="font-semibold text-[var(--text-default)]">
                           {exam.name}
                         </h4>
                         <p className="text-sm text-gray-500">
@@ -527,7 +527,7 @@ const StudentDetail = () => {
 
         {activeTab === "payments" && (
           <div>
-            <h3 className="text-lg font-semibold text-gray-800 mb-4">
+            <h3 className="text-lg font-semibold text-[var(--text-default)] mb-4">
               To'lovlar tarixi
             </h3>
             <div className="space-y-3">
@@ -537,7 +537,7 @@ const StudentDetail = () => {
                   className="flex items-center justify-between py-3 border-b border-gray-100"
                 >
                   <div>
-                    <p className="font-medium text-gray-800">
+                    <p className="font-medium text-[var(--text-default)]">
                       {payment.month} oyi
                     </p>
                     <p className="text-sm text-gray-500">
@@ -572,7 +572,7 @@ const StudentDetail = () => {
 
         {activeTab === "attendance" && (
           <div>
-            <h3 className="text-lg font-semibold text-gray-800 mb-4">
+            <h3 className="text-lg font-semibold text-[var(--text-default)] mb-4">
               Davomat
             </h3>
             <div className="grid grid-cols-7 gap-2">

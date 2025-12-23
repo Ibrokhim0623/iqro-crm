@@ -12,7 +12,7 @@ const ProfilePopover: React.FC<SidebarProfileProps> = ({ name, avatarUrl }) => {
   const content = (
     <div className="w-40">
       <div className="flex flex-col items-center">
-        <p className="mt-1 text-base font-semibold text-gray-800">
+        <p className="mt-1 text-base font-semibold text-[var(--text-default)]">
           Ibrohim Barnoyev
         </p>
         <p className="font-medium text-gray-500">Admin</p>

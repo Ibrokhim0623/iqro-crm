@@ -17,8 +17,8 @@ const Login = () => {
       <div className="absolute w-full h-full top-0 left-0 z-1">
         <img className="w-full h-full object-cover" src={loginBg} />
       </div>
-      <div className="relative z-2 w-full max-w-md bg-white p-8 rounded-2xl shadow-xl border border-gray-100">
-        <Title level={3} className="text-center mb-6 text-gray-700!">
+      <div className="relative z-2 w-full max-w-md bg-[var(--bg)] p-8 rounded-2xl shadow-xl border border-gray-100">
+        <Title level={3} className="text-center mb-6 text-grayVar700!">
           Login to CRM
         </Title>
 
