@@ -27,5 +27,8 @@ export function useAddPayment() {
       queryClient.invalidateQueries({ queryKey: ["monthlyDebts"] });
       toast.success("To'lovingiz qabul qilindi");
     },
+    onError: (error: Error) => {
+      toast.error(error.message || "To'lov qabul qilinmadi");
+    },
   });
 }

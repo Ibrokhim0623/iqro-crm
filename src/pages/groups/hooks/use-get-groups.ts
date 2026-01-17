@@ -22,8 +22,8 @@ export function useGetGroups() {
 
       if (error) throw error;
 
-      return (data ?? []) as unknown as IGroup[];
+      return (data ?? []) as IGroup[];
     },
-    staleTime: Infinity,
+    staleTime: 5 * 60 * 1000, // 5 daqiqa
   });
 }

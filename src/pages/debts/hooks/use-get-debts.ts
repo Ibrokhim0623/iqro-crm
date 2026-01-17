@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@lib/supabase";
-import type { IDebtData } from "../models";
+import type { IDebtData, SupabaseDebtRow } from "../models";
 
 export function useGetMonthlyDebts() {
   return useQuery<IDebtData[], Error>({
@@ -9,7 +9,7 @@ export function useGetMonthlyDebts() {
       const { data, error } = await supabase.rpc("get_monthly_debts");
       if (error) throw error;
 
-      return (data || []).map((row: any) => ({
+      return (data || []).map((row: SupabaseDebtRow) => ({
         student: {
           student_id: row.student_id,
           name: row.student_name,
@@ -23,6 +23,6 @@ export function useGetMonthlyDebts() {
         debt: row.debt,
       }));
     },
-    staleTime: Infinity,
+    staleTime: 5 * 60 * 1000, // 5 daqiqa
   });
 }

@@ -76,7 +76,11 @@ const CreateUpdateModal = () => {
             { min: 3, message: "Kamida 3 ta harf!" },
           ]}
         >
-          <Input placeholder="Masalan: Ali Valiyev" size="large" />
+          <Input
+            readOnly={currentStudent?.status === "left"}
+            placeholder="Masalan: Ali Valiyev"
+            size="large"
+          />
         </Form.Item>
 
         <Form.Item
@@ -90,7 +94,11 @@ const CreateUpdateModal = () => {
             },
           ]}
         >
-          <Input placeholder="+998901234567" size="large" />
+          <Input
+            readOnly={currentStudent?.status === "left"}
+            placeholder="+998901234567"
+            size="large"
+          />
         </Form.Item>
 
         <Form.Item
@@ -98,7 +106,12 @@ const CreateUpdateModal = () => {
           label="Guruh"
           rules={[{ required: true, message: "Guruhni tanlang!" }]}
         >
-          <Select placeholder="Guruhni tanlang" size="large" showSearch>
+          <Select
+            disabled={currentStudent?.status === "left"}
+            placeholder="Guruhni tanlang"
+            size="large"
+            allowClear
+          >
             {groups?.map((group) => (
               <Option key={group.id} value={group.id}>
                 {group.name}
@@ -107,10 +120,15 @@ const CreateUpdateModal = () => {
           </Select>
         </Form.Item>
 
-        <Form.Item name="status" label="Holat">
-          <Select size="large">
-            <Option value="active">✓ Faol</Option>
-            <Option value="inactive">✗ Nofaol</Option>
+        <Form.Item
+          name="status"
+          label="Statusi"
+          rules={[{ required: true, message: "Statusini tanlang!" }]}
+        >
+          <Select size="large" placeholder="Tanlang" allowClear>
+            <Option value="trial">Sinov</Option>
+            <Option value="active">Faol</Option>
+            <Option value="left">Ketgan</Option>
           </Select>
         </Form.Item>
       </Form>

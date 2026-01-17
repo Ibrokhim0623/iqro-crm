@@ -1,9 +1,15 @@
 import { Navigate } from "react-router-dom";
-import { useEffect, useState, type JSX } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import { supabase } from "@lib/supabase";
+import type { Session } from "@supabase/supabase-js";
+import { Spin } from "antd";
 
-const ProtectedRoute = ({ children }: { children: JSX.Element }) => {
-  const [session, setSession] = useState<any | null>(null);
+interface ProtectedRouteProps {
+  children: ReactNode;
+}
+
+const ProtectedRoute = ({ children }: ProtectedRouteProps) => {
+  const [session, setSession] = useState<Session | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -23,11 +29,17 @@ const ProtectedRoute = ({ children }: { children: JSX.Element }) => {
     return () => subscription.unsubscribe();
   }, []);
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center h-screen">
+        <Spin size="large" />
+      </div>
+    );
+  }
 
   if (!session) return <Navigate to="/login" replace />;
 
-  return children;
+  return <>{children}</>;
 };
 
 export default ProtectedRoute;

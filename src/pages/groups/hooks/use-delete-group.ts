@@ -1,5 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { supabase } from "@lib/supabase";
+import { toast } from "sonner";
 
 export function useDeleteGroup() {
   const queryClient = useQueryClient();
@@ -19,6 +20,10 @@ export function useDeleteGroup() {
 
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["groups"] });
+      toast.success("O'chirildi");
+    },
+    onError: (error: Error) => {
+      toast.error(error.message || "Xatolik yuz berdi");
     },
   });
 }

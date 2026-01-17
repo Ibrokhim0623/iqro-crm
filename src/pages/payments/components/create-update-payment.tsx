@@ -12,6 +12,13 @@ const CreateUpdatePayment = () => {
   const { data: students } = useGetStudents();
   const createPayment = useAddPayment();
 
+  const options = students
+    ?.filter((s) => s?.status !== "trial" && s?.status !== "inactive")
+    .map((s) => ({
+      value: s.id,
+      label: s.name,
+    }));
+
   const open = useAppSelector(
     (state) => state.paymentsSlice.paymentVisible.open
   );
@@ -54,10 +61,7 @@ const CreateUpdatePayment = () => {
         >
           <Select
             placeholder="O‘quvchini tanlang"
-            options={students?.map((s) => ({
-              value: s.id,
-              label: s.name,
-            }))}
+            options={options}
             className="w-full"
           />
         </Form.Item>

@@ -34,5 +34,8 @@ export function useUpsertStudent() {
       queryClient.invalidateQueries({ queryKey: ["monthlyDebts"] });
       toast.success("Muvaffaqqiyatli");
     },
+    onError: (error: Error) => {
+      toast.error(error.message || "Xatolik yuz berdi");
+    },
   });
 }

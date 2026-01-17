@@ -1,6 +1,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { supabase } from "@lib/supabase";
-import type { IGroup, IGroupInput } from "../models";
+import type { IGroup, IGroupInput, ITeacher } from "../models";
+import { toast } from "sonner";
 
 export function useUpsertGroup() {
   const queryClient = useQueryClient();
@@ -49,7 +50,7 @@ export function useUpsertGroup() {
         price_cource: data.price_cource,
         teacher: Array.isArray(data.teacher)
           ? data.teacher[0]
-          : (data.teacher as any),
+          : (data.teacher as ITeacher | null),
         start_time: data.start_time,
         end_time: data.end_time,
         days: data.days,
@@ -60,6 +61,10 @@ export function useUpsertGroup() {
 
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["groups"] });
+      toast.success("Muvaffaqqiyatli");
+    },
+    onError: (error: Error) => {
+      toast.error(error.message || "Xatolik yuz berdi");
     },
   });
 }

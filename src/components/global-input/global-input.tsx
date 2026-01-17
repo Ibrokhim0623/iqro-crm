@@ -6,7 +6,7 @@ type GlobalInputProps = {
   returnType?: "string" | "number";
   className?: string;
   onChange?: (value: string | number) => void;
-  value?: any;
+  value?: string | number;
   placeholder?: string;
   disabled?: boolean;
 };

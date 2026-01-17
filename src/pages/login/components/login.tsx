@@ -8,7 +8,12 @@ const Login = () => {
   const { login, loading, error } = useLogin();
   const [form] = Form.useForm();
 
-  const onFinish = (values: any) => {
+  interface LoginFormValues {
+    email: string;
+    password: string;
+  }
+
+  const onFinish = (values: LoginFormValues) => {
     login(values.email, values.password);
   };
 

@@ -1,11 +1,28 @@
 import { Table } from "antd";
-import { Edit2, Trash2 } from "lucide-react";
+import { Edit2, Trash2, Eye } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useDeleteStudent, useGetStudents } from "../hooks";
 import { cx } from "@utils/helpers";
 import { useAppDispatch } from "@hooks/redux-hooks";
 import { setOpen } from "@reducers/students-slice";
 import ConfirmModal from "@components/confirm-modal/confirm-modal";
+
+type StudentStatus = "trial" | "active" | "left";
+
+const statusMap: Record<StudentStatus, { label: string; className: string }> = {
+  active: {
+    label: "Faol",
+    className: "bg-green-100 text-green-600",
+  },
+  trial: {
+    label: "Sinov",
+    className: "bg-blue-100 text-blue-600",
+  },
+  left: {
+    label: "Ketgan",
+    className: "bg-red-100 text-red-600",
+  },
+};
 
 const StudentsTable = () => {
   const navigate = useNavigate();
@@ -55,33 +72,45 @@ const StudentsTable = () => {
       key: "5",
       title: "Holati",
       dataIndex: "status",
-      render: (record: "inactive" | "active") => (
-        <div
-          className={cx(
-            record === "active"
-              ? "bg-green-100 text-green-600"
-              : "bg-red-100 text-red-600",
-            "w-max px-3 rounded-md font-medium"
-          )}
-        >
-          {record === "active" ? "Faol" : "Faol emas"}
-        </div>
-      ),
+      render: (status: StudentStatus) => {
+        const config = statusMap[status];
+
+        return (
+          <div
+            className={cx(
+              config.className,
+              "w-max px-3 py-1 rounded-md font-medium text-sm"
+            )}
+          >
+            {config.label}
+          </div>
+        );
+      },
     },
     {
       key: "6",
       title: "Amallar",
-      render: (record: { id: number }) => (
+      render: (record: { id: number; status: StudentStatus }) => (
         <div
           className="flex items-center gap-3"
           onClick={(e) => e.stopPropagation()}
         >
-          <Edit2
-            size={16}
-            className="cursor-pointer"
-            stroke="blue"
-            onClick={() => openStudentModal({ studentId: record?.id })}
-          />
+          {record?.status === "left" ? (
+            <Eye
+              size={16}
+              className="cursor-pointer"
+              stroke="blue"
+              onClick={() => openStudentModal({ studentId: record?.id })}
+            />
+          ) : (
+            <Edit2
+              size={16}
+              className="cursor-pointer"
+              stroke="blue"
+              onClick={() => openStudentModal({ studentId: record?.id })}
+            />
+          )}
+
           <ConfirmModal
             text="Haqiqatdan ham ushbu o'quvchini o'chirmoqchimisiz?"
             title="O'quvchini o'chirish"

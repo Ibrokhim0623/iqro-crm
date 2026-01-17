@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import type { IPayment } from "../models";
+import type { IPayment, SupabasePayment } from "../models";
 import { supabase } from "@lib/supabase";
 
 export function useGetPayments() {
@@ -22,7 +22,7 @@ export function useGetPayments() {
 
       if (error) throw error;
 
-      return (data || []).map((p: any) => ({
+      return (data || []).map((p: SupabasePayment) => ({
         id: p.id,
         student_name: p.student_name,
         amount: Number(p.amount),
@@ -31,7 +31,7 @@ export function useGetPayments() {
         created_at: p.created_at,
       }));
     },
-    staleTime: Infinity,
+    staleTime: 5 * 60 * 1000, // 5 daqiqa
     refetchOnWindowFocus: true,
   });
 }

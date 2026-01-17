@@ -96,6 +96,6 @@
   --grad-rose-to:   #881337;
 }
 
-span, div, p {
+/* span, div, p {
   color: var(--text-default) !important;
-}
+} */
